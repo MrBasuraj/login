@@ -1,0 +1,92 @@
+/* Centers everything on the screen and sets the purple background */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #6a1b9a; /* Deep purple background */
+    font-family: Arial, sans-serif;
+}
+
+/* Container box for the login form */
+.login-container {
+    background-color: #ffffff; /* Clean white card for contrast */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 350px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* The colorful, vibrant Username text header */
+.colorful-header {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+    background: linear-gradient(45deg, #ff4081, #00e5ff, #ffeb3b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* Standard styling for the form elements */
+#loginform {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* Normal, standard labels */
+label {
+    text-align: left;
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+/* Normal input fields */
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* Normal input focus effect */
+input:focus {
+    border-color: #6a1b9a;
+}
+
+/* Standard login button */
+button {
+    background-color: #222;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+/* Error message styling */
+#error {
+    color: #d32f2f;
+    font-size: 0.9rem;
+    margin-top: 15px;
+    font-weight: bold;
+}

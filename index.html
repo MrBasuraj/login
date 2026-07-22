@@ -1,32 +1,48 @@
-<html>
-<form id="loginform">
-    <label for="username">Username:</label>
-    <input type="text" id="username" required>
-    
-    <label for="password">Password:</label>
-    <input type="password" id="password" required>
-    
-    <button type="submit">Login</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- LINK TO YOUR STYLE.CSS FILE -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<p id="error" style="color: red; display: none;">Invalid username or password.</p>
+    <div class="login-container">
+        <!-- Colorful username text centered in the document card -->
+        <div class="colorful-header">Login</div>
 
-<script>
-document.getElementById('loginform').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const nameInput = document.getElementById('username').value;
-    const passInput = document.getElementById('password').value;
-    
-    if (nameInput === "dishant" && passInput === "Dishant261") {
-        // 1. Set the session token to mark the user as authenticated
-        sessionStorage.setItem("isLoggedIn", "true");
+        <!-- The login form -->
+        <form id="loginform">
+            <label for="username">Username</label>
+            <input type="text" id="username" required autocomplete="off">
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+
+        <p id="error" style="display: none;">Invalid username or password.</p>
+    </div>
+
+    <script>
+    document.getElementById('loginform').addEventListener('submit', function(e) {
+        e.preventDefault();
         
-        // 2. Redirect to the page
-        window.location.href = "wish.html?name=" + encodeURIComponent(nameInput);
-    } else {
-        document.getElementById('error').style.display = "block";
-    }
-});
-</script>
+        const nameInput = document.getElementById('username').value;
+        const passInput = document.getElementById('password').value;
+        
+        // Match exact credentials
+        if (nameInput === "dishant" && passInput === "Dishant261") {
+            sessionStorage.setItem("isLoggedIn", "true");
+            window.location.href = "wish.html?name=" + encodeURIComponent(nameInput);
+        } else {
+            document.getElementById('error').style.display = "block";
+        }
+    });
+    </script>
+
+</body>
 </html>

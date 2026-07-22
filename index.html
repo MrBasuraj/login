@@ -1,0 +1,32 @@
+<html>
+<form id="loginform">
+    <label for="username">Username:</label>
+    <input type="text" id="username" required>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" required>
+    
+    <button type="submit">Login</button>
+</form>
+
+<p id="error" style="color: red; display: none;">Invalid username or password.</p>
+
+<script>
+document.getElementById('loginform').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const nameInput = document.getElementById('username').value;
+    const passInput = document.getElementById('password').value;
+    
+    if (nameInput === "dishant" && passInput === "Dishant261") {
+        // 1. Set the session token to mark the user as authenticated
+        sessionStorage.setItem("isLoggedIn", "true");
+        
+        // 2. Redirect to the page
+        window.location.href = "wish.html?name=" + encodeURIComponent(nameInput);
+    } else {
+        document.getElementById('error').style.display = "block";
+    }
+});
+</script>
+</html>

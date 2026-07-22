@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Special Wish</title>
+    <script>
+        // IMMEDIATELY CHECK AUTHENTICATION BEFORE THE PAGE LOADS
+        if (sessionStorage.getItem("isLoggedIn") !== "true") {
+            // Redirect unauthorized users back to the login page
+            window.location.href = "index.html";
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            padding-top: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="greeting">Loading...</h1>
+
+    <script>
+        // If they passed the check above, read the name and show the message
+        const urlParams = new URLSearchParams(window.location.search);
+        const userName = urlParams.get('name');
+
+        if (userName) {
+            const formattedName = userName.charAt(0).toUpperCase() + userName.slice(1);
+            document.getElementById('greeting').innerText = `Best Wishes, ${formattedName}! ✨`;
+        } else {
+            document.getElementById('greeting').innerText = "Welcome! ✨";
+        }
+    </script>
+  <h1>Hey Dishant </h1>
+  Greetings From Basuraj
+  Your Login Is Successful 
+  please wait…
+  Your Content Is Under Construction
+</body>
+</html>

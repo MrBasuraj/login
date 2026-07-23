@@ -33,6 +33,19 @@
     </div>
 
     <script>
+        const passwordInput = document.getElementById('password');
+const toggleIcon = document.getElementById('togglePassword');
+
+toggleIcon.addEventListener('click', function() {
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleIcon.textContent = "👁️‍🗨️"; // Changes to open/modified eye when password is shown
+    } else {
+        passwordInput.type = "password";
+        toggleIcon.textContent = "👁"; // Changes back to default eye when hidden
+    }
+});
+
     // List of allowed users - you can easily add or edit entries here
     const validUsers = [
         { u: "Dishant", p: "Dishant261" },

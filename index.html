@@ -39,7 +39,7 @@ const toggleIcon = document.getElementById('togglePassword');
 toggleIcon.addEventListener('click', function() {
     if (passwordInput.type === "password") {
         passwordInput.type = "text";
-        toggleIcon.textContent = "👁️‍🗨️"; // Changes to open/modified eye when password is shown
+        toggleIcon.textContent = "🚫"; // Changes to open/modified eye when password is shown
     } else {
         passwordInput.type = "password";
         toggleIcon.textContent = "👁"; // Changes back to default eye when hidden

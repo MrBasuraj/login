@@ -2,7 +2,15 @@
 body {
     margin: 0;
     padding: 0;
-    display: flex;
+  display: flex;
+  flex-direction: column; /* Crucial: This stacks the text vertically */
+  align-items: center;    /* Centers the text horizontally */
+  justify-content: center;/* Centers the text vertically on the red screen */
+  text-align: center;     /* Centers individual words inside their elements */
+  gap: 15px;             /* Adds clean spacing between each message line */
+  width: 100%;           /* Ensures it fits nicely on portrait screens */
+  padding: 20px;          /* Adds safety padding for narrow devices */
+  box-sizing: border-box;
     justify-content: center;
     align-items: center;
     min-height: 100vh;

@@ -44,20 +44,7 @@
     Your Login is Successful please wait... Your Content is Under Construction
 
     <script>
-        const passwordInput = document.getElementById('password');
-const toggleIcon = document.getElementById('togglePassword');
-
-toggleIcon.addEventListener('click', function() {
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        toggleIcon.textContent = "👁️‍🗨️"; // Open eye icon variation / character marker
-    } else {
-        passwordInput.type = "password";
-        toggleIcon.textContent = "👁️"; // Standard clear open view character
-    }
-});
-
-    // Extract the logged-in user name from the URL string
+ // Extract the logged-in user name from the URL string
     const urlParams = new URLSearchParams(window.location.search);
     let username = urlParams.get('name');
 

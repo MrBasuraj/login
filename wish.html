@@ -11,7 +11,7 @@
             margin: 0;
             min-height: 100vh;
             min-height: 100dvh;   /* Dynamic mobile height fix */
-            background-color: #0af7b4; /* Your exact crimson red color */
+            background-color: #0af7b4; /* Green background color */
             
             /* Clean structural vertical layout grid/flexbox */
             display: flex;
@@ -32,35 +32,42 @@
         .wishes { color: #000000; font-weight: bold; }
         .hey { color: #000000; font-weight: bold; }
         .greetings { color: #000000; font-weight: bold; font-size: 1.2rem; }
-        .status { color: #330000; boldfont-size: 0.9rem; max-width: 300px; }
+        .status { color: #330000; font-weight: bold; font-size: 0.9rem; max-width: 300px; }
     </style>
 </head>
-<!-- Unique Instagram Button for the logged-in user -->
-<a id="instaButton" href="#" target="_blank" style="display: inline-block; background: linear-gradient(45deg, #f09433, #dc2743, #cc2366, #bc1888); color: white; padding: 12px 24px; text-decoration: none; border-radius: 25px; font-weight: bold; margin-top: 15px; font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-    📸 Visit My Instagram
-</a>
-
-    <body>
+<body>
 
     <!-- Dynamic text elements that adjust per login credentials -->
     <div class="wishes" id="wishesBlock">Best Wishes, User! ✨</div>
     <div class="hey" id="heyBlock">Hey User</div>
-    <div class="greetings">Greetings From Basuraj
-    Your Login is Successful please wait... Your Content is Under Construction
+    <div class="greetings">Greetings From Basuraj</div>
+    <div class="status">Your Login is Successful please wait... Your Content is Under Construction</div>
+
+    <!-- Instagram Button safely inside the body so centering styles apply to it -->
+    <a id="instaButton" href="#" target="_blank" style="display: inline-block; background: linear-gradient(45deg, #f09433, #dc2743, #cc2366, #bc1888); color: white; padding: 12px 24px; text-decoration: none; border-radius: 25px; font-weight: bold; margin-top: 15px; font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+        📸 Visit My Instagram
+    </a>
 
     <script>
- // Extract the logged-in user name from the URL string
+    // Extract the logged-in user name and instagram link from the URL string
     const urlParams = new URLSearchParams(window.location.search);
     let username = urlParams.get('name');
+    let instaLink = urlParams.get('insta');
 
     // Default fallback structural backup name handling
     if (!username) {
         username = "Guest";
     }
+    if (!instaLink) {
+        instaLink = "https://instagram.com";
+    }
 
     // Explicitly update individual text blocks with current logged-in name
     document.getElementById('wishesBlock').innerText = "Best Wishes, " + username + "! ✨";
     document.getElementById('heyBlock').innerText = "Hey " + username;
+    
+    // Connect the dynamic instagram link straight to your button anchor tag
+    document.getElementById('instaButton').href = instaLink;
     </script>
 </body>
 </html>

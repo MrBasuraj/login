@@ -104,3 +104,7 @@ button:hover {
     padding: 20px;
   }
 }
+.text-container {
+  width: 100%; /* Use percentage instead of fixed pixels */
+  box-sizing: border-box; 
+}

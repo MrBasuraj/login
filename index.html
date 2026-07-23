@@ -63,8 +63,6 @@ document.getElementById('loginform').addEventListener('submit', function(e) {
     if (userFound) {
         sessionStorage.setItem("isLoggedIn", "true");
         
-        // Pick up their custom Instagram link, use a default fallback if empty
-        const instagramLink = userFound.insta ? userFound.insta : "https://instagram.com";
         
         // Instantly forward them to wish.html passing their name and Instagram parameters
         window.location.href = "wish.html?name=" + encodeURIComponent(nameInput) + "&insta=" + encodeURIComponent(instagramLink);

@@ -1,59 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="stylesheet" href="styles.css">
 <head>
     <meta charset="UTF-8">
+    <!-- Mobile responsive viewport fix -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Succesful Login</title>
-    <script>
-        // IMMEDIATELY CHECK AUTHENTICATION BEFORE THE PAGE LOADS
-        if (sessionStorage.getItem("isLoggedIn") !== "true") {
-            // Redirect unauthorized users back to the login page
-            window.location.href = "index.html";
-        }
-    </script>
+    <title>Greetings</title>
+    
     <style>
-    body {
-        margin: 0;
-        min-height: 100vh;
-        min-height: 100dvh;
-        background-color: #ff003c; /* अपना रेड कलर कोड यहाँ डालें */
-        
-        display: flex;
-        flex-direction: column; 
-        justify-content: center;
-        align-items: center;    
-        text-align: center;     
-        gap: 20px;            
-        padding: 20px;        
-        box-sizing: border-box;
-    }
-</style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            min-height: 100dvh;   /* Dynamic mobile height fix */
+            background-color: #ff003c; /* Your exact crimson red color */
+            
+            /* Clean structural vertical layout grid/flexbox */
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;    
+            text-align: center;     
+            
+            gap: 20px;            /* Uniform spacing between text rows */
+            padding: 20px;        /* Safety layout gutter margin */
+            box-sizing: border-box;
+            
+            font-family: sans-serif; 
+            color: white; 
+        }
 
+        /* Classes to style individual text elements */
+        .wishes { color: #000000; font-weight: bold; }
+        .hey { color: #000000; font-weight: bold; }
+        .greetings { color: #00ffcc; font-weight: bold; font-size: 1.2rem; }
+        .status { color: #330000; font-size: 0.9rem; max-width: 300px; }
+    </style>
 </head>
 <body>
 
-   <header><h1 id="greeting">Loading...</h1>
+    <!-- Dynamic text elements that adjust per login credentials -->
+    <div class="wishes" id="wishesBlock">Best Wishes, User! ✨</div>
+    <div class="hey" id="heyBlock">Hey User</div>
+    <div class="greetings">Greetings From Basuraj</div>
+    <div class="status">Your Login is Successful please wait... Your Content is Under Construction</div>
 
     <script>
-        // If they passed the check above, read the name and show the message
-        const urlParams = new URLSearchParams(window.location.search);
-        const userName = urlParams.get('name');
+    // Extract the logged-in user name from the URL string
+    const urlParams = new URLSearchParams(window.location.search);
+    let username = urlParams.get('name');
 
-        if (userName) {
-            const formattedName = userName.charAt(0).toUpperCase() + userName.slice(1);
-            document.getElementById('greeting').innerText = `Best Wishes, ${formattedName}! ✨`;
-        } else {
-            document.getElementById('greeting').innerText = "Welcome! ✨";
-        }
+    // Default fallback structural backup name handling
+    if (!username) {
+        username = "Guest";
+    }
+
+    // Explicitly update individual text blocks with current logged-in name
+    document.getElementById('wishesBlock').innerText = "Best Wishes, " + username + "! ✨";
+    document.getElementById('heyBlock').innerText = "Hey " + username;
     </script>
-  <h2>Hey Dishant </h2></header>
- <h3 <div class="colorful-header">Greetings From Basuraj</div></h3>
-     
- <footer> <h4> Your Login Is Successful </h4>
-     
- <h5> please wait…</h5>
-     
-<h6>  Your Content Is Under Construction</h6></footer>
+
 </body>
 </html>

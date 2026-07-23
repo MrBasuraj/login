@@ -36,42 +36,35 @@
         const passwordInput = document.getElementById('password');
 const toggleIcon = document.getElementById('togglePassword');
 
-toggleIcon.addEventListener('click', function() {
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        toggleIcon.textContent = "🚫"; // Changes to open/modified eye when password is shown
+if (toggleIcon && passwordInput) {
+    toggleIcon.addEventListener('click', function() {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleIcon.textContent = "🚫"; 
+        } else {
+            passwordInput.type = "password";
+            toggleIcon.textContent = "👁"; 
+        }
+    });
+}
+
+document.getElementById('loginform').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const nameInput = document.getElementById('username').value;
+    const passInput = document.getElementById('password').value;
+    
+    const userFound = validUsers.find(user => user.u === nameInput && user.p === passInput);
+    
+    if (userFound) {
+        sessionStorage.setItem("isLoggedIn", "true");
+        window.location.href = "wish.html?name=" + encodeURIComponent(nameInput);
     } else {
-        passwordInput.type = "password";
-        toggleIcon.textContent = "👁"; // Changes back to default eye when hidden
+        document.getElementById('error').style.display = "block";
     }
 });
 
-    // List of allowed users - you can easily add or edit entries here
-    const validUsers = [
-        { u: "Dishant", p: "Dishant261" },
-        { u: "Basuraj", p: "Basuraj36" },
-        { u: "Manav", p: "Manav183" },
-        { u: "Prince", p: "Prince" },
-        { u: "Bhavya", p: "Bhavya263" },
-        { u: "Priya", p: "Pranav2510" }
-    ];
-
-    document.getElementById('loginform').addEventListener('submit', function(e) {
-        e.preventDefault();
         
-        const nameInput = document.getElementById('username').value;
-        const passInput = document.getElementById('password').value;
-        
-        // Checks if the entered credentials match any user in the array
-        const userFound = validUsers.find(user => user.u === nameInput && user.p === passInput);
-        
-        if (userFound) {
-            sessionStorage.setItem("isLoggedIn", "true");
-            window.location.href = "wish.html?name=" + encodeURIComponent(nameInput);
-        } else {
-            document.getElementById('error').style.display = "block";
-        }
-    });
     </script>
 
 </body>

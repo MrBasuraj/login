@@ -19,7 +19,11 @@
             <input type="text" id="username" required autocomplete="off">
             
             <label for="password">Password</label>
-            <input type="password" id="password" required>
+<div style="position: relative; display: flex; align-items: center;">
+    <input type="password" id="password" required style="width: 100%; padding-right: 40px; box-sizing: border-box;">
+    <span id="togglePassword" style="position: absolute; right: 12px; cursor: pointer; user-select: none;">👁️</span>
+</div>
+
             
             <button type="submit">Login</button>
         </form>

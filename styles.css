@@ -85,8 +85,22 @@ button:hover {
 
 /* Error message styling */
 #error {
-    color: #d32f2f;
+    color: #001eff;
     font-size: 0.9rem;
     margin-top: 15px;
     font-weight: bold;
+}
+/* Paste this at the bottom of your CSS file */
+@media (max-width: 600px) or (orientation: portrait) {
+  .text-container {
+    display: flex;
+    flex-direction: column; /* Forces elements to stack into rows */
+    align-items: center;    /* Centers them horizontally */
+    justify-content: center;/* Centers them vertically */
+    gap: 20px;              /* Spacing between the text lines */
+    text-align: center;     /* Centers the actual text words */
+    width: 100%;            /* Keeps it within the screen bounds */
+    box-sizing: border-box;
+    padding: 20px;
+  }
 }

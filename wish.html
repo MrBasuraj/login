@@ -43,10 +43,7 @@
     <div class="greetings">Greetings From Basuraj</div>
     <div class="status">Your Login is Successful please wait... Your Content is Under Construction</div>
 
-    <!-- Instagram Button safely inside the body so centering styles apply to it -->
-    <a id="instaButton" href="#" target="_blank" style="display: inline-block; background: linear-gradient(45deg, #f09433, #dc2743, #cc2366, #bc1888); color: white; padding: 12px 24px; text-decoration: none; border-radius: 25px; font-weight: bold; margin-top: 15px; font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
-        📸 Visit My Instagram
-    </a>
+    
 
     <script>
     // Extract the logged-in user name and instagram link from the URL string
@@ -54,20 +51,13 @@
     let username = urlParams.get('name');
     let instaLink = urlParams.get('insta');
 
-    // Default fallback structural backup name handling
-    if (!username) {
-        username = "Guest";
-    }
-    if (!instaLink) {
-        instaLink = "https://instagram.com";
-    }
+    
 
     // Explicitly update individual text blocks with current logged-in name
     document.getElementById('wishesBlock').innerText = "Best Wishes, " + username + "! ✨";
     document.getElementById('heyBlock').innerText = "Hey " + username;
     
-    // Connect the dynamic instagram link straight to your button anchor tag
-    document.getElementById('instaButton').href = instaLink;
+    
     </script>
 </body>
 </html>

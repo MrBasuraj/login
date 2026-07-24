@@ -43,21 +43,21 @@
     <div class="greetings">Greetings From Basuraj</div>
     <div class="status">Your Login is Successful please wait... Your Content is Under Construction</div>
 
-    
-
     <script>
     // Extract the logged-in user name and instagram link from the URL string
     const urlParams = new URLSearchParams(window.location.search);
     let username = urlParams.get('name');
     let instaLink = urlParams.get('insta');
 
-    
+    /* --- LOGIN CHECK RESTRICION --- */
+    // If username is missing, empty, or null, kick back to login page
+    if (!username || username.trim() === "") {
+        window.location.href = "index.html";
+    }
 
     // Explicitly update individual text blocks with current logged-in name
     document.getElementById('wishesBlock').innerText = "Best Wishes, " + username + "! ✨";
     document.getElementById('heyBlock').innerText = "Hey " + username;
-    
-    
     </script>
 </body>
 </html>

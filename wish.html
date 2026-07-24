@@ -1,8 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Mobile responsive viewport fix -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Greetings</title>
     
@@ -10,25 +10,19 @@
         body {
             margin: 0;
             min-height: 100vh;
-            min-height: 100dvh;   /* Dynamic mobile height fix */
-            background-color: #0af7b4; /* Green background color */
-            
-            /* Clean structural vertical layout grid/flexbox */
+            min-height: 100dvh;   
+            background-color: #0af7b4; 
             display: flex;
             flex-direction: column; 
             justify-content: center;
             align-items: center;    
             text-align: center;     
-            
-            gap: 20px;            /* Uniform spacing between text rows */
-            padding: 20px;        /* Safety layout gutter margin */
+            gap: 20px;            
+            padding: 20px;        
             box-sizing: border-box;
-            
             font-family: sans-serif; 
             color: white; 
         }
-
-        /* Classes to style individual text elements */
         .wishes { color: #000000; font-weight: bold; }
         .hey { color: #000000; font-weight: bold; }
         .greetings { color: #000000; font-weight: bold; font-size: 1.2rem; }
@@ -37,20 +31,17 @@
 </head>
 <body>
 
-    <!-- Dynamic text elements that adjust per login credentials -->
     <div class="wishes" id="wishesBlock">Best Wishes, User! ✨</div>
     <div class="hey" id="heyBlock">Hey User</div>
     <div class="greetings">Greetings From Basuraj</div>
     <div class="status">Your Login is Successful please wait... Your Content is Under Construction</div>
 
     <script>
-    // Extract the logged-in user name and instagram link from the URL string
+    // Extract ONLY the logged-in user name from the URL string
     const urlParams = new URLSearchParams(window.location.search);
     let username = urlParams.get('name');
-    let instaLink = urlParams.get('insta');
 
-    /* --- LOGIN CHECK RESTRICION --- */
-    // If username is missing, empty, or null, kick back to login page
+    /* --- LOGIN CHECK RESTRICTION --- */
     if (!username || username.trim() === "") {
         window.location.href = "index.html";
     }

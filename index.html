@@ -19,61 +19,66 @@
             <input type="text" id="username" required autocomplete="off">
             
             <label for="password">Password</label>
-<div style="position: relative; width: 100%; display: block;">
-    <input type="password" id="password" required style="width: 100%; padding-right: 40px; box-sizing: border-box;">
-    <span id="togglePassword" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; user-select: none; line-height: 1;">👁</span>
-</div>
-
-
+            <div style="position: relative; width: 100%; display: block;">
+                <input type="password" id="password" required style="width: 100%; padding-right: 40px; box-sizing: border-box;">
+                <span id="togglePassword" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; user-select: none; line-height: 1;">👁</span>
+            </div>
             
             <button type="submit">Login</button>
         </form>
 
-        <p id="error" style="display: none;">Invalid username or password.</p>
+        <p id="error" style="display: none; color: red; font-weight: bold; margin-top: 10px;">Invalid username or password.</p>
     </div>
 
     <script>
-        
-// 2. Password visibility eye-toggle logic
-const passwordInput = document.getElementById('password');
-const toggleIcon = document.getElementById('togglePassword');
+    /* --- 1. DEFINE YOUR USERS ARRAY HERE --- */
+    const validUsers = [
+        { u: "admin", p: "password123" },
+        { u: "Basuraj", p: "Basu2026" }
+        { u: "Dishant", p:"Dishant261"}
+        { u: "Manav", p:"Manav183"}
+            
+    ];
 
-if (toggleIcon && passwordInput) {
-    toggleIcon.addEventListener('click', function() {
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            toggleIcon.textContent = "🚫"; // Shown when the password text is visible
+    /* --- 2. PASSWORD VISIBILITY TOGGLE --- */
+    const passwordInput = document.getElementById('password');
+    const toggleIcon = document.getElementById('togglePassword');
+
+    if (toggleIcon && passwordInput) {
+        toggleIcon.addEventListener('click', function() {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleIcon.textContent = "🚫"; 
+            } else {
+                passwordInput.type = "password";
+                toggleIcon.textContent = "👁"; 
+            }
+        });
+    }
+
+    /* --- 3. LOGIN VERIFICATION HANDLER --- */
+    document.getElementById('loginform').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const nameInput = document.getElementById('username').value.trim();
+        const passInput = document.getElementById('password').value;
+        
+        document.getElementById('error').style.display = "none";
+        
+        // Scan your local array list to find a matching user
+        const userFound = validUsers.find(user => user.u === nameInput && user.p === passInput);
+        
+        if (userFound) {
+            sessionStorage.setItem("isLoggedIn", "true");
+            
+            // Forward to wish.html passing ONLY the username parameter
+            const targetUrl = "wish.html?name=" + encodeURIComponent(userFound.u);
+            window.location.href = targetUrl;
         } else {
-            passwordInput.type = "password";
-            toggleIcon.textContent = "👁"; // Shown when the password text is hidden
+            document.getElementById('error').style.display = "block";
         }
     });
-}
-
-// 3. Login Verification handler
-document.getElementById('loginform').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const nameInput = document.getElementById('username').value.trim();
-    const passInput = document.getElementById('password').value;
-    
-    // Scan your local array list to find a matching user
-    const userFound = validUsers.find(user => user.u === nameInput && user.p === passInput);
-    
-    if (userFound) {
-        sessionStorage.setItem("isLoggedIn", "true");
-        
-        
-        // Instantly forward them to wish.html passing their name and Instagram parameters
-        window.location.href = "wish.html?name=" + encodeURIComponent(nameInput) + "&insta=" + encodeURIComponent(instagramLink);
-    } else {
-        // Display the standard incorrect login text error block
-        document.getElementById('error').style.display = "block";
-    }
-});
-
     </script>
 
 </body>
 </html>
-
